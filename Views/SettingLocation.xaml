@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BkTravelApp.Views.SettingLocation"
+             Title="                   Add Location you like">
+    <ScrollView>
+        <VerticalStackLayout Margin="20">
+            <Frame>
+                <VerticalStackLayout>
+                    <Image x:Name="imgBtn" BackgroundColor="Violet" WidthRequest="200" HeightRequest="270" Aspect="AspectFill"/>
+                    <Button x:Name="btnPickImage" Text="Add image Location" Margin="0,20,0,0" Clicked="btnPickImage_Clicked" />
+                    <Label BackgroundColor="White" HeightRequest="1" Margin="0,20,0,10"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Name : " FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Entry x:Name="nameLocate" Placeholder="Entry Name" PlaceholderColor="DarkGray"
+                               Margin="10,0,0,0" WidthRequest="250" ClearButtonVisibility="WhileEditing"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Type : " FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Picker x:Name="pkAddType" 
+                                Title="Select Type of loacation" 
+                            
+                                ItemsSource="{Binding TravelTypes}"
+                                ItemDisplayBinding="{Binding TypeName}"
+                                WidthRequest="250" Margin="18,0,0,0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Note : " FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Entry x:Name="entryDescrib" Placeholder="Entry Describtion of your location"
+                               Margin="15,0,0,0" WidthRequest="250" ClearButtonVisibility="WhileEditing"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" >
+                        <Label Text="Location : " FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label x:Name="entryLocatation" Text="" Margin="0,10,0,0" WidthRequest="250"
+                               HeightRequest="70" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
+                        <Label Text="Longtitude : " FontAttributes="Bold"/>
+                        <Label x:Name="entryLongitude" Text="" Margin="0,0,0,10"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Latitude :" FontAttributes="Bold"/>
+                        <Label x:Name="entryLatitude" Text=""/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
+                        <Button x:Name="btnGetLocate" Text="Get Location" Margin="20,20,0,10"
+                                WidthRequest="150" Clicked="btnGetLocate_Clicked" BackgroundColor="Blue" 
+                                FontAttributes="Bold"/>
+                        <Button x:Name="btnSaveInfo" Text="Save" Margin="10,20,20,10"  WidthRequest="100"
+                                Clicked="btnSaveInfo_Clicked" BackgroundColor="GreenYellow" 
+                                TextColor="Black" FontAttributes="Bold" />
+                    </StackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BkTravelApp.Views.StartPage"
+             x:Name="MapMain"
+             Title=" Bangkok Travel App">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem  x:Name="AddTravel" Clicked="AddTravel_Clicked" >
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="&#xe02e;"
+                                 FontFamily="MaterialIcons-Regular"
+                                 Size="25"/>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <VerticalStackLayout Padding="20">
+            <Label Text="Pick location type" FontSize="Medium" FontAttributes="Bold" 
+                       TextColor="Purple"/>
+            <Picker x:Name="pkLocaType" 
+                    Title="Select Type of loacation"
+                    ItemsSource="{Binding TravelTypes}"
+                    ItemDisplayBinding="{Binding TypeName}"
+                    SelectedIndexChanged="pkLocaType_SelectedIndexChanged"/>
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,10">
+                <Label Text="Show loacation : " FontAttributes="Bold"  FontSize="Medium"
+                       TextColor="Purple"/>
+                <Label x:Name="showType" Text="" FontAttributes="Bold"  FontSize="Medium"
+                       TextColor="Purple"/>
+            </StackLayout>
+            <Button x:Name="btnNearMe" Text="Location Near Me" Clicked="btnNearMe_Clicked"
+                    FontSize="16" FontAttributes="Bold" Margin="0,0,0,10"/>
+            <CollectionView x:Name="showLocate" ItemsSource="{Binding Travels}"
+                            HeightRequest="500" SelectionMode="Single"
+                            SelectionChanged="showLocate_SelectionChanged" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="10">
+                            <StackLayout Orientation="Horizontal" >
+                                <Image Source="{Binding ImageLocation}" Aspect="AspectFill"
+                                       WidthRequest="140" HeightRequest="190"/>
+                                <StackLayout  >
+                                    <Label Text="{Binding Name}" 
+                                           FontAttributes="Bold"
+                                           FontSize="15" Margin="10,0,0,0" WidthRequest="150"/>
+                                    <Label Text="{Binding Describtion}" Margin="10,0,0,0" />
+                                    <Label x:Name="showDistance" Text="{Binding Distance, Mode=OneTime}" FontSize="15" Margin="10,10,0,10" />
+                                    <StackLayout Orientation="Horizontal" Margin="30,0,0,10">
+                                        <Button Text="Edit" BackgroundColor="LightGreen" WidthRequest="100"
+                                            FontAttributes="Bold" FontSize="18" 
+                                            Command="{Binding Source={x:Reference MapMain},
+                                        Path=BindingContext.EditCommand}"
+                                            CommandParameter="{Binding .}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Margin="30,0,0,10">
+                                        <Button x:Name="btnMap" Text="Map" BackgroundColor="Blue" 
+                                                    FontAttributes="Bold" FontSize="18" TextColor="White" 
+                                                    Command="{Binding Source={x:Reference MapMain},
+                                                Path=BindingContext.MapCommand}"
+                                                    CommandParameter="{Binding .}"
+                                                    WidthRequest="100" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BkTravelApp.Views.EditTravel"
+             x:Name="EditTraveling"
+             Title="                       Edit Travel Location">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame Margin="10">
+                <StackLayout>
+                    <Label Text="Edit Location" FontSize="20" 
+                           FontAttributes="Bold"/>
+                    <Label Text="Image :" FontSize="15" FontAttributes="Bold"
+                           Margin="0,10,0,10"/>
+                    <Image x:Name="EditShowImage" BackgroundColor="Violet" HeightRequest="200" WidthRequest="150" Margin="0,0,0,10"
+                           Aspect="AspectFill"/>
+                    <Button x:Name="updateImage" Text="Pick new image" Clicked="updateImage_Clicked"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Name : " FontSize="15" FontAttributes="Bold"
+                           Margin="0,20,0,10"/>
+                        <Entry x:Name="editName" Text="{Binding Name}"
+                               Margin="5,7,0,0" WidthRequest="270" 
+                               ClearButtonVisibility="WhileEditing"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Type : " FontSize="15" FontAttributes="Bold"
+                           Margin="0,20,0,10"/>
+                        <Picker x:Name="pkEditType" Title="Select Type of loacation"
+                                Margin="13,7,0,0" WidthRequest="270" 
+                                ItemsSource="{Binding TravelTypes}" ItemDisplayBinding="{Binding TypeName}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Describtion : " FontSize="15" FontAttributes="Bold"
+                           Margin="0,10,0,0"/>
+                        <Entry x:Name="EditShowDesc" Text="{Binding Describtion}" Margin="0,0,0,10" WidthRequest="236"
+                               ClearButtonVisibility="WhileEditing"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Location : " FontSize="15" FontAttributes="Bold"
+                           Margin="0"/>
+                        <Label x:Name="EditShowLoca" Text="{Binding address}" HeightRequest="70" 
+                               WidthRequest="270"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Latitude : " FontSize="15" FontAttributes="Bold"
+                           Margin="0,10,0,0"/>
+                        <Entry x:Name="EditShowLa" Text="{Binding latitude}" />
+                        <Label Text="Longitude : " FontSize="15" FontAttributes="Bold"
+                           Margin="0,10,0,0"/>
+                        <Entry x:Name="EditShowLong" Text="{Binding longitude}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button x:Name="delteTravel" Text="Delete" WidthRequest="100" BackgroundColor="Red"
+                                TextColor="Black" FontAttributes="Bold" Clicked="delteTravel_Clicked"  Margin="0,0,10,0"/>
+                        <Button x:Name="getLocation" Text="Get Location" BackgroundColor="Blue"
+                                Clicked="getLocation_Clicked"/>
+                        <Button x:Name="saveEdit" Text="Save" WidthRequest="100" Margin="10,0,0,0" BackgroundColor="LightGreen"
+                                TextColor="Black" FontAttributes="Bold" Clicked="saveEdit_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
